@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ikaw at ako, isang panata</title>
+<style>
+:root{--paper:#f7f1ea;--cream:#fffaf4;--ink:#302a2d;--muted:#786f72;--rose:#d7adb7;--lav:#c8bfda;--blue:#b9cbd8;--line:#ded3cc;--shadow:0 25px 70px rgba(48,40,42,.12)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:Georgia,'Times New Roman',serif;background:radial-gradient(circle at 10% 5%,rgba(215,173,183,.2),transparent 27%),radial-gradient(circle at 90% 15%,rgba(200,191,218,.22),transparent 30%),var(--paper)}
+button{font:inherit}.hidden{display:none!important}
+#cover{min-height:100vh;display:grid;place-items:center;position:relative;overflow:hidden;padding:24px}.grain{position:absolute;inset:0;opacity:.12;background-image:radial-gradient(#776b6b .7px,transparent .7px);background-size:9px 9px}.ring{position:absolute;border:1px solid rgba(83,70,75,.12);border-radius:50%;animation:spin 30s linear infinite}.r1{width:510px;height:510px}.r2{width:760px;height:760px;animation-direction:reverse;animation-duration:45s}@keyframes spin{to{transform:rotate(360deg)}}
+.cover-card{position:relative;z-index:2;width:min(820px,100%);text-align:center;padding:58px 25px}.kicker,.num,.tiny,.song-label,.drawer-note{font-family:Arial,sans-serif;text-transform:uppercase;letter-spacing:.16em;color:var(--muted)}.kicker{font-size:11px}.cover-card h1{font-weight:400;font-size:clamp(50px,9vw,100px);line-height:.9;letter-spacing:-.07em;margin:24px 0}.subtitle{max-width:620px;margin:auto;font-size:18px;line-height:1.8;color:var(--muted)}.pills{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:25px 0}.pill{border:1px solid var(--line);border-radius:999px;padding:8px 12px;background:rgba(255,250,244,.72);font:11px Arial,sans-serif}.enter{border:1px solid var(--ink);border-radius:999px;background:var(--ink);color:#fff;padding:14px 23px;cursor:pointer;transition:.25s}.enter:hover{transform:translateY(-3px)}
+#site{display:none}.top{position:sticky;top:0;z-index:50;background:rgba(247,241,234,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.topin{max-width:1080px;margin:auto;padding:11px 17px;display:flex;align-items:center;gap:14px}.brand{font-weight:bold;white-space:nowrap;font-size:15px}.progress{height:5px;flex:1;background:#e7ddd8;border-radius:99px;overflow:hidden}.progress i{display:block;width:8%;height:100%;background:linear-gradient(90deg,var(--lav),var(--rose));transition:.45s}.music-top{border:1px solid var(--line);background:var(--cream);border-radius:12px;padding:8px 11px;cursor:pointer}
+main{max-width:980px;margin:auto;padding:45px 20px 110px}.chapter{min-height:92vh;display:flex;align-items:center;padding:60px 0;scroll-margin-top:72px}.panel{width:100%;position:relative;overflow:hidden;background:rgba(255,250,244,.8);border:1px solid var(--line);border-radius:29px;padding:clamp(28px,6vw,64px);box-shadow:var(--shadow)}.panel:after{content:'';position:absolute;right:-80px;top:-80px;width:180px;height:180px;border-radius:50%;background:rgba(200,191,218,.16)}.num{font-size:10px}.panel h2{font-size:clamp(38px,7vw,72px);font-weight:400;line-height:.98;letter-spacing:-.06em;margin:14px 0 20px}.lead{font-size:20px;line-height:1.7;color:var(--muted)}p{font-size:17px;line-height:1.92;margin:13px 0}.rule{height:1px;background:var(--line);margin:32px 0}.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:13px;margin-top:28px}.card{background:rgba(255,255,255,.45);border:1px solid var(--line);border-radius:19px;padding:21px}.card h3{font-size:20px;font-weight:400;margin:7px 0}.card p{font-size:15px}.tiny{font-size:9px}.quote{font-size:clamp(28px,5vw,49px);line-height:1.24;letter-spacing:-.035em;margin:30px 0}.promise{margin:28px 0;padding:23px 25px;border-left:3px solid var(--rose);background:rgba(215,173,183,.1);border-radius:0 18px 18px 0}.promise p{margin:8px 0}.song-card{margin-top:30px;border:1px dashed #cbbdb7;border-radius:19px;padding:17px 19px;display:flex;align-items:center;justify-content:space-between;gap:15px;background:rgba(255,250,244,.72)}.song-label{font-size:9px;margin-bottom:5px}.song-card strong{font-size:16px;font-weight:400}.song-card button{border:0;border-radius:999px;background:var(--ink);color:white;padding:9px 14px;cursor:pointer}.ending{text-align:center}.ending h2{max-width:760px;margin-left:auto;margin-right:auto}.signature{color:var(--muted);font-size:18px}.footer{text-align:center;color:var(--muted);font:11px Arial,sans-serif;margin-top:40px}
+.music-fab{position:fixed;right:18px;bottom:18px;z-index:80;border:1px solid var(--line);background:rgba(255,250,244,.96);border-radius:999px;padding:11px 15px;box-shadow:0 14px 35px rgba(48,40,42,.16);cursor:pointer}.drawer{position:fixed;right:18px;bottom:73px;width:min(420px,calc(100vw - 36px));z-index:81;background:rgba(255,250,244,.98);border:1px solid var(--line);border-radius:25px;box-shadow:var(--shadow);padding:18px;display:none}.drawer.open{display:block}.drawer-head{display:flex;align-items:center;justify-content:space-between}.drawer-head strong{font-weight:400;font-size:20px}.close{border:0;background:none;font-size:22px;cursor:pointer}.tabs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-top:14px}.tabs button{border:1px solid var(--line);background:white;border-radius:11px;padding:9px 5px;cursor:pointer;font-size:12px}.tabs button.active{background:var(--ink);color:white}.album{display:none;margin-top:13px}.album.active{display:block}.track{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 3px;border-bottom:1px solid var(--line)}.track:last-child{border-bottom:0}.track b{font-weight:400;font-size:14px}.track small{display:block;color:var(--muted);font:10px Arial,sans-serif;margin-top:4px}.track button{border:1px solid var(--line);background:white;border-radius:999px;padding:7px 10px;cursor:pointer}.drawer-note{font-size:8px;line-height:1.65;margin-top:13px;letter-spacing:.09em}.unlock{margin-top:12px;padding:13px;border:1px solid var(--line);border-radius:15px;background:rgba(200,191,218,.12);font-size:13px;line-height:1.6}.toast{position:fixed;left:50%;bottom:25px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--ink);color:white;border-radius:999px;padding:11px 16px;font:11px Arial,sans-serif;transition:.3s;z-index:100}.toast.show{opacity:1;transform:translate(-50%,0)}.reveal{opacity:0;transform:translateY(22px);transition:.8s}.reveal.show{opacity:1;transform:none}
+@media(max-width:680px){.cards{grid-template-columns:1fr}.chapter{min-height:auto;padding:34px 0}.panel{padding:28px 21px}.cover-card{padding:40px 8px}.cover-card h1{font-size:57px}.song-card{align-items:flex-start;flex-direction:column}.topin{padding:10px 12px}.brand{font-size:13px}}
+
+/* COQUETTE DETAILS + PET EASTER EGGS */
+.cover-card{border:1px solid rgba(215,173,183,.42);border-radius:38px;background:rgba(255,250,244,.52);box-shadow:0 25px 80px rgba(115,88,103,.10);backdrop-filter:blur(8px)}
+.cover-card:before,.cover-card:after{content:"♡";position:absolute;color:rgba(190,142,164,.48);font-size:28px}
+.cover-card:before{left:30px;top:25px}.cover-card:after{right:30px;bottom:25px}
+.cover-whisper{margin-top:20px;font:11px/1.7 Arial,sans-serif;letter-spacing:.05em;color:#a58f98}
+.pill{background:rgba(255,255,255,.58);box-shadow:0 5px 18px rgba(120,90,105,.05)}
+.pet-archive{margin:34px 0 0;padding:24px;border-radius:25px;border:1px solid rgba(215,173,183,.42);background:linear-gradient(145deg,rgba(255,250,246,.9),rgba(245,237,247,.72));position:relative;overflow:hidden}
+.pet-archive:before{content:"♡  ˚₊‧  ✿  ˚₊‧  ♡";position:absolute;right:16px;top:12px;color:#c9a5b5;font-size:12px;letter-spacing:.16em}
+.pet-archive h3{font-weight:400;font-size:24px;margin:0 0 7px}.pet-archive>p{font-size:13px;color:var(--muted);margin:0 0 17px}
+.pet-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.pet-box{border:1px solid #dec8d0;background:rgba(255,255,255,.62);border-radius:19px;padding:16px 10px;cursor:pointer;transition:.25s;position:relative;overflow:hidden;text-align:center;color:var(--ink)}
+.pet-box:hover{transform:translateY(-4px) rotate(-1deg);box-shadow:0 15px 30px rgba(120,90,105,.12)}
+.pet-box .pet-face{font-size:34px;display:block;margin-bottom:6px}.pet-box b{font-weight:400;font-size:15px}.pet-box small{display:block;font:9px Arial,sans-serif;color:#9a858d;margin-top:4px;letter-spacing:.08em}
+.pet-popup{position:fixed;inset:0;z-index:120;display:none;place-items:center;padding:20px;background:rgba(45,31,42,.28);backdrop-filter:blur(7px)}
+.pet-popup.show{display:grid}.pet-pop-card{width:min(360px,100%);background:#fffaf8;border:1px solid #e0cbd3;border-radius:28px;padding:30px;text-align:center;box-shadow:0 30px 80px rgba(50,30,45,.22);animation:petPop .38s ease both}
+.pet-pop-card .pet-big{font-size:76px;line-height:1;margin-bottom:12px}.pet-pop-card h3{font-weight:400;font-size:30px;margin:0 0 8px}.pet-pop-card p{font-size:14px;color:var(--muted);margin:0 0 18px}
+.pet-close{border:1px solid #d9c3cc;background:white;border-radius:999px;padding:9px 15px;cursor:pointer}@keyframes petPop{from{opacity:0;transform:translateY(18px) scale(.92) rotate(-2deg)}to{opacity:1;transform:none}}
+@media(max-width:680px){.pet-grid{grid-template-columns:1fr}.cover-card:before,.cover-card:after{display:none}}
+/* SECRET ROOM */
+.secret-room{display:none!important;scroll-margin-top:30px;
+  position:relative;
+  min-height:100vh;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:90px 20px;
+  background:
+    radial-gradient(circle at 18% 22%,rgba(177,126,255,.22),transparent 24%),
+    radial-gradient(circle at 82% 75%,rgba(229,143,207,.16),transparent 25%),
+    linear-gradient(145deg,#09051a 0%,#140a2e 48%,#21103b 100%);
+}
+.secret-room::before,.secret-room::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background-image:
+    radial-gradient(circle,rgba(255,255,255,.9) 0 1px,transparent 1.7px),
+    radial-gradient(circle,rgba(218,193,255,.7) 0 1px,transparent 1.6px),
+    radial-gradient(circle,rgba(255,255,255,.6) 0 1px,transparent 1.5px);
+  background-size:137px 151px,211px 187px,89px 113px;
+  background-position:12px 8px,44px 71px,31px 39px;
+  opacity:.55;
+  animation:starDrift 22s linear infinite;
+}
+.secret-room::after{opacity:.28;transform:scale(1.25);animation-duration:34s}
+@keyframes starDrift{to{transform:translate3d(0,18px,0)}}
+.secret-orbit{
+  position:absolute;width:min(88vw,900px);height:min(88vw,900px);
+  border:1px solid rgba(222,195,255,.12);border-radius:50%;
+  box-shadow:0 0 80px rgba(155,104,255,.08);
+  animation:orbitSpin 28s linear infinite;
+}
+@keyframes orbitSpin{to{transform:rotate(360deg)}}
+.secret-room .flower{
+  position:absolute;z-index:2;filter:drop-shadow(0 0 14px rgba(207,167,255,.35));
+  animation:flowerFloat 5s ease-in-out infinite;
+  user-select:none;
+}
+.secret-room .f1{left:6%;top:15%;font-size:52px;transform:rotate(-15deg)}
+.secret-room .f2{right:8%;top:19%;font-size:44px;animation-delay:-1.3s}
+.secret-room .f3{left:10%;bottom:13%;font-size:42px;animation-delay:-2.1s}
+.secret-room .f4{right:10%;bottom:10%;font-size:56px;animation-delay:-3.2s}
+.secret-room .f5{left:23%;top:7%;font-size:25px;animation-delay:-.6s}
+.secret-room .f6{right:25%;bottom:7%;font-size:28px;animation-delay:-2.8s}
+@keyframes flowerFloat{50%{translate:0 -12px;rotate:3deg}}
+.secret-room .secret-panel{
+  position:relative;z-index:4;width:min(850px,100%);
+  text-align:center;padding:48px 34px 42px;
+  border:1px solid rgba(232,216,255,.25);
+  border-radius:34px;
+  background:linear-gradient(180deg,rgba(38,20,66,.78),rgba(17,10,34,.88));
+  backdrop-filter:blur(18px);
+  box-shadow:0 30px 100px rgba(0,0,0,.42),0 0 70px rgba(151,104,255,.13);
+}
+.secret-kicker{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 13px;border-radius:999px;
+  color:#e7d8ff;background:rgba(185,139,255,.1);
+  border:1px solid rgba(213,185,255,.2);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+}
+.secret-title{
+  margin:20px 0 8px;font-size:clamp(42px,8vw,78px);line-height:.95;
+  letter-spacing:-.05em;color:#fff;
+  text-shadow:0 0 30px rgba(213,176,255,.32);
+}
+.secret-subtitle{color:#cdbbe5;font-size:15px;margin-bottom:28px}
+.secret-letter{
+  text-align:left;margin:0 auto;padding:28px 27px;
+  border-radius:24px;background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+}
+.secret-letter p{margin:0 0 17px;color:#eee7f5;line-height:1.85;font-size:15px}
+.secret-letter p:last-child{margin-bottom:0}
+.secret-highlight{
+  margin:24px 0;padding:22px 20px;border-radius:20px;
+  background:linear-gradient(135deg,rgba(156,108,229,.16),rgba(225,143,194,.10));
+  border:1px solid rgba(218,184,255,.18);
+  color:#fff;font-size:19px;line-height:1.65;
+  box-shadow:0 0 35px rgba(158,112,231,.08);
+}
+.secret-ending{
+  margin-top:28px;color:#f4eafa;font-size:17px;line-height:1.8
+}
+.secret-ending strong{display:block;margin-top:8px;font-size:23px;color:#fff}
+.secret-room.secret-unlocked{display:flex!important}.secret-room.secret-unlocked .secret-panel{animation:secretReveal 1.1s ease both}
+@keyframes secretReveal{from{opacity:0;transform:translateY(24px) scale(.985)}to{opacity:1;transform:none}}
+.secret-note{margin-top:24px;color:#a99ab9;font-size:11px;letter-spacing:.08em}
+@media(max-width:620px){
+  .secret-room .secret-panel{padding:36px 16px 30px;border-radius:26px}
+  .secret-letter{padding:22px 18px}
+  .secret-letter p{font-size:14px;line-height:1.75}
+  .secret-highlight{font-size:17px}
+  .secret-room .f1{left:2%;font-size:38px}.secret-room .f2{right:2%;font-size:34px}
+  .secret-room .f3{left:3%;font-size:34px}.secret-room .f4{right:3%;font-size:40px}
+}
+
+
+/* FINAL SECRET ROOM LOCK + FLOWER / STAR LAYER */
+.secret-room{display:none!important}
+.secret-room.secret-unlocked{display:flex!important}
+.secret-room .flower{display:block!important;z-index:5;font-family:system-ui,sans-serif;text-shadow:0 0 22px rgba(198,151,255,.5)}
+.secret-room .f1{left:5%;top:16%;font-size:58px}.secret-room .f2{right:6%;top:14%;font-size:50px}
+.secret-room .f3{left:7%;bottom:14%;font-size:50px}.secret-room .f4{right:7%;bottom:13%;font-size:60px}
+.secret-room .f5{left:20%;bottom:8%;font-size:34px}.secret-room .f6{right:20%;top:8%;font-size:34px}
+.star{position:absolute;z-index:3;color:#eadbff;text-shadow:0 0 18px rgba(215,174,255,.8);font-size:24px;animation:twinkle 2.8s ease-in-out infinite}.star-a{left:16%;top:30%}.star-b{right:17%;top:35%;animation-delay:-1s}.star-c{left:28%;bottom:22%;font-size:18px;animation-delay:-1.7s}.star-d{right:28%;bottom:25%;font-size:30px;animation-delay:-.5s}@keyframes twinkle{50%{opacity:.35;transform:scale(.7) rotate(20deg)}}
+.secret-room:after{content:'🌷  ✦  🌹  ✦  🌷';position:absolute;bottom:20px;left:50%;transform:translateX(-50%);z-index:4;color:#d9b7ee;font-size:18px;letter-spacing:12px;opacity:.85;white-space:nowrap}
+
+/* ultimate additions */
+.openwhen-grid,.classified-grid,.constellation-wrap,.choose-wrap{display:grid;gap:14px}.openwhen-grid{grid-template-columns:repeat(auto-fit,minmax(190px,1fr));margin-top:18px}.openwhen-card,.classified-card,.memory-card,.choose-card{border:1px solid rgba(125,92,140,.18);background:rgba(255,255,255,.76);border-radius:22px;padding:18px;box-shadow:0 10px 30px rgba(80,45,90,.07);cursor:pointer;transition:.25s}.openwhen-card:hover,.classified-card:hover,.memory-card:hover,.choose-card:hover{transform:translateY(-4px)}.openwhen-card b,.classified-card b,.memory-card b{display:block;margin:7px 0}.mini-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.58}.constellation-wrap{grid-template-columns:1fr 1.2fr;align-items:center;margin-top:18px}.sky{position:relative;min-height:330px;border-radius:28px;overflow:hidden;background:radial-gradient(circle at 50% 50%,#47335e,#211936 48%,#100c1c);box-shadow:inset 0 0 70px rgba(255,255,255,.04)}.sky:before,.sky:after{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.9) 1px,transparent 1.6px);background-size:48px 48px;opacity:.45}.sky:after{background-size:83px 83px;opacity:.25;transform:translate(18px,11px)}.star{position:absolute;width:13px;height:13px;border:0;border-radius:50%;background:#fff7ff;box-shadow:0 0 13px #fff;cursor:pointer;z-index:2}.star:nth-child(1){left:18%;top:27%}.star:nth-child(2){left:43%;top:18%}.star:nth-child(3){left:69%;top:31%}.star:nth-child(4){left:30%;top:57%}.star:nth-child(5){left:58%;top:63%}.star:nth-child(6){left:80%;top:54%}.star:nth-child(7){left:48%;top:82%}.constellation-lines{position:absolute;inset:0;pointer-events:none}.constellation-lines path{stroke:rgba(245,220,255,.46);stroke-width:1.2;fill:none;stroke-dasharray:4 7}.sky-title{position:absolute;left:20px;bottom:17px;color:#fff;font-size:13px;opacity:.75;z-index:3}.classified{margin-top:20px;border:1px dashed rgba(125,92,140,.3);border-radius:26px;padding:20px;background:rgba(255,245,251,.62)}.classified-grid{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-top:13px}.classified-card{background:#fff8fc}.garden{position:relative;min-height:210px;border-radius:28px;overflow:hidden;margin-top:18px;background:linear-gradient(#171128,#25153b 55%,#3a2142);border:1px solid rgba(255,255,255,.08)}.garden .moon{position:absolute;right:35px;top:22px;width:54px;height:54px;border-radius:50%;background:#fff7ff;box-shadow:0 0 35px rgba(255,239,255,.65)}.garden .bloom{position:absolute;bottom:63px;font-size:29px;filter:drop-shadow(0 0 8px rgba(255,180,240,.35));transform:scale(0);transition:transform .5s}.garden.bloomed .bloom{transform:scale(1)}.garden-note{position:absolute;left:20px;top:18px;color:#fff;opacity:.78;font-size:12px;z-index:3}.choose-wrap{grid-template-columns:repeat(3,1fr);margin-top:18px}.choose-card{text-align:center}.choose-card .icon{font-size:28px;margin-bottom:8px}@media(max-width:720px){.constellation-wrap{grid-template-columns:1fr}.choose-wrap{grid-template-columns:1fr}}
+
+/* ROBUST OPEN FIX */
+#site.site-open{display:block!important}
+#site.site-open .reveal{opacity:1;transform:none}
+body.site-active{overflow-x:hidden}
+
+/* FINAL POLISH: two distinct secret rooms + mystery game + pet modal */
+.secret-room{display:none!important}
+.secret-room.secret-unlocked{display:flex!important}
+.mystery-secret-room{display:none;position:relative;min-height:100vh;overflow:hidden;align-items:center;justify-content:center;padding:90px 20px;background:linear-gradient(180deg,#5d466f 0%,#c78383 42%,#f1b27f 68%,#f7d6a5 100%);scroll-margin-top:20px}
+.mystery-secret-room.unlocked{display:flex;animation:sunsetIn 1.2s ease both}
+@keyframes sunsetIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+.mystery-secret-room:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 47%,rgba(255,235,188,.65),transparent 20%),linear-gradient(180deg,transparent 0 54%,rgba(93,64,67,.15) 55%);pointer-events:none}
+.sunset-orb{position:absolute;width:130px;height:130px;border-radius:50%;background:#ffe3a2;box-shadow:0 0 70px rgba(255,218,142,.8);left:50%;top:42%;transform:translate(-50%,-50%)}
+.sunset-cloud{position:absolute;width:180px;height:32px;background:rgba(255,239,224,.35);border-radius:999px;filter:blur(2px)}.sunset-cloud:before,.sunset-cloud:after{content:"";position:absolute;border-radius:50%;background:inherit}.sunset-cloud:before{width:70px;height:70px;left:25px;top:-30px}.sunset-cloud:after{width:90px;height:90px;right:25px;top:-42px}.c1{left:8%;top:35%}.c2{right:7%;top:49%;transform:scale(.75)}
+.sunset-flower{position:absolute;font-size:48px;filter:drop-shadow(0 8px 12px rgba(80,50,60,.18));animation:flowerFloat 5s ease-in-out infinite;z-index:2}.sf1{left:7%;bottom:11%}.sf2{right:8%;bottom:12%;animation-delay:-1.5s}.sf3{left:23%;bottom:7%;font-size:34px;animation-delay:-2.5s}
+.mystery-secret-panel{position:relative;z-index:5;width:min(820px,100%);padding:48px 34px;border-radius:34px;background:rgba(255,249,242,.88);border:1px solid rgba(255,255,255,.7);box-shadow:0 35px 100px rgba(75,48,66,.2);backdrop-filter:blur(10px);text-align:center}
+.sunset-letter{text-align:left;margin:25px auto 0;width:min(690px,100%);font-size:14px;line-height:1.9;color:#624e55}.sunset-letter p{margin:0 0 17px}.sunset-highlight{margin:22px 0;padding:20px;border-radius:22px;background:rgba(238,194,157,.3);text-align:center;font-size:16px;color:#684f59}.sunset-final{font-size:18px!important;text-align:center;color:#76535e!important}
+.mystery-game{margin:25px auto 0;width:min(720px,100%);padding:24px;border-radius:28px;background:rgba(255,250,253,.72);border:1px solid rgba(125,92,140,.18);box-shadow:0 18px 50px rgba(80,45,90,.07)}
+.mystery-progress{display:flex;align-items:center;gap:12px;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:#816b78}.mystery-progress i{height:8px;flex:1;background:#eee4eb;border-radius:999px;overflow:hidden}.mystery-progress b{display:block;width:0;height:100%;background:linear-gradient(90deg,#b8a2c8,#d9aebd);transition:.4s}
+.mystery-question{margin:25px 0 15px;font-size:20px;line-height:1.5}.mystery-choices{display:grid;grid-template-columns:1fr 1fr;gap:12px}.mystery-choice{border:1px solid rgba(125,92,140,.18);background:white;border-radius:18px;padding:15px;text-align:left;cursor:pointer;color:#5f5058;transition:.25s;font-family:inherit}.mystery-choice:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(80,45,90,.1)}.mystery-choice.correct{background:#f2eee6;border-color:#b9a68f}.mystery-choice.wrong{opacity:.5}.mystery-feedback{margin-top:15px;min-height:22px;font-size:12px;color:#786872}
+@media(max-width:680px){.mystery-choices{grid-template-columns:1fr}.mystery-secret-panel{padding:34px 20px}.sunset-letter{font-size:13px}}
+
+.pet-popup{position:fixed;inset:0;z-index:9999;display:none;place-items:center;padding:20px;background:rgba(38,25,35,.35);backdrop-filter:blur(7px)}.pet-popup.show{display:grid}.pet-pop-card{width:min(390px,100%);background:linear-gradient(145deg,#fffaf7,#fdf4f8);border:1px solid #e2cbd4;border-radius:30px;padding:30px;text-align:center;box-shadow:0 30px 80px rgba(50,30,45,.22);animation:petPop .38s ease both}.pet-pop-card .pet-big{font-size:76px;line-height:1;margin-bottom:12px}.pet-pop-card h3{font-weight:400;font-size:30px;margin:0 0 8px}.pet-pop-card p{font-size:14px;line-height:1.7;color:var(--muted);margin:0 0 18px}.pet-close{border:1px solid #d9c3cc;background:white;border-radius:999px;padding:9px 17px;cursor:pointer;font-family:inherit}.pet-close:hover{transform:translateY(-2px)}
+</style>
+
+<style>
+/* FINAL CUTE INTERACTIONS */
+.inline-reveal{margin-top:12px;padding:12px 14px;border-radius:16px;background:linear-gradient(135deg,rgba(255,244,249,.95),rgba(244,237,255,.95));border:1px dashed rgba(170,130,160,.28);color:#6e5a68;font-size:12px;line-height:1.65;animation:softReveal .35s ease both;text-align:left}
+@keyframes softReveal{from{opacity:0;transform:translateY(6px) scale(.98)}to{opacity:1;transform:none}}
+.pet-box.expanded{transform:translateY(-4px) rotate(-1deg);box-shadow:0 15px 30px rgba(120,90,105,.12)}
+.pet-box .pet-mini-note{display:none;margin-top:9px;font-size:11px;line-height:1.55;color:#7d6872}
+.pet-box.expanded .pet-mini-note{display:block;animation:softReveal .35s ease both}
+.mystery-star-wrap{position:relative;min-height:72px;margin-top:12px;display:flex;justify-content:flex-end;align-items:center}
+.mystery-star{appearance:none;border:0;background:transparent;color:#bca1cf;font-size:25px;cursor:pointer;filter:drop-shadow(0 0 8px rgba(175,132,215,.45));animation:mysteryTwinkle 2.2s ease-in-out infinite;opacity:.75}
+.mystery-star:hover{opacity:1;transform:scale(1.18)}
+@keyframes mysteryTwinkle{50%{opacity:.25;transform:scale(.78) rotate(12deg)}}
+.mystery-panel{display:none;margin-top:14px;padding:24px;border-radius:26px;background:linear-gradient(145deg,rgba(250,244,255,.92),rgba(255,247,250,.92));border:1px solid rgba(170,130,160,.2);box-shadow:0 18px 50px rgba(90,55,100,.08);animation:softReveal .5s ease both}
+.mystery-panel.show{display:block}
+.mystery-panel .mystery-lock{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#9b8293}
+.mystery-panel h3{margin:8px 0;font-weight:400}
+.mystery-panel p{font-size:13px;line-height:1.8;color:#6e5a68}
+.mystery-solve{margin-top:12px;border:1px solid rgba(155,115,145,.3);background:#fffafd;border-radius:999px;padding:11px 17px;cursor:pointer;color:#634f5d}
+.mystery-solve:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(100,70,100,.1)}
+.secret-unlocked .secret-panel{animation:secretArrive 1.1s cubic-bezier(.2,.8,.2,1) both}
+@keyframes secretArrive{from{opacity:0;transform:translateY(35px) scale(.96)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<section id="cover"><div class="grain"></div><div class="ring r1"></div><div class="ring r2"></div><div class="cover-card reveal show">
+<div class="kicker">a little thing i made for you ♡</div>
+<h1>ikaw at ako,<br>then somehow, tayo</h1>
+<p class="subtitle">i made this little corner for you, babii, filled with little things i wanted you to see, a few memories, and some very obvious easter eggs hehe :></p>
+<div class="pills"><span class="pill">for you</span><span class="pill">for us</span><span class="pill">little surprises</span><span class="pill">made by me hehe</span></div>
+<button class="enter" onclick="enterSite()">open this hehe :></button>
+<div class="cover-whisper">take your time, okay? there are little things hiding around here ♡</div>
+</div></section>
+
+<div id="site"><header class="top"><div class="topin"><div class="brand">ikaw at ako</div><div class="progress"><i id="bar"></i></div><button class="music-top" onclick="toggleDrawer()">music</button></div></header>
+<main>
+<section class="chapter"><div class="panel reveal"><div class="num">01 / ikaw</div><h2>where our little story started</h2><p class="lead">hindi naman kailangan maging super grand ng simula natin para maging special</p><p>babii, minsan napapaisip ako kung gaano karaming small moments yung kailangan mangyari bago tayo naging ganito hehe yung mga tinginan, random na usapan, mga pagkakataong hindi natin alam kung saan papunta, hanggang sa unti unti naging ikaw at ako, tapos ayunn naging tayo :></p><p>and i think yun yung pinaka gusto ko sa story natin. hindi siya isang malaking moment lang, parang binuo siya ng maraming little things na nangyari satin hanggang sa naging “tayo” na talaga hehe</p><p>kaya kapag naiisip ko yung “before us”, hindi ko siya tinitingnan as something na kailangan palitan. gusto ko siyang alalahanin kasi doon nagsimula yung mga maliliit na bagay na eventually naging parte ng atin</p><div class="song-card"><div><div class="song-label">play ikaw at ako if you want to remember our things before :)</div><strong>ikaw at ako</strong></div><button onclick="playTrack('memory')">play :></button></div></div></section>
+
+<div class="pet-archive reveal">
+  <h3>tiny pet department ♡</h3>
+  <p>i think you should meet the three little creatures who somehow became part of our world hehe</p>
+  <div class="pet-grid">
+    <button class="pet-box" onclick="showPet('eli')"><span class="pet-face">🐶</span><b>eli :D</b><small>our dog</small></button>
+    <button class="pet-box" onclick="showPet('elo')"><span class="pet-face">🐱</span><b>elo :p</b><small>our cat</small></button>
+    <button class="pet-box" onclick="showPet('kiyaa')"><span class="pet-face">🦊</span><b>kiyaa</b><small>our fox</small></button>
+  </div>
+</div>
+
+<section class="chapter"><div class="panel reveal"><div class="num">02 / ako</div><h2>things loving you taught me</h2><p class="lead">loving you also taught me a lot of things na hindi ko naman alam before</p><div class="cards"><div class="card"><div class="tiny">lesson 01</div><h3>makinig muna</h3><p>hindi naman lahat kailangan agad ayusin hehe minsan kailangan lang pala ng taong handang makinig hanggang maging ready ka magsabi</p></div><div class="card"><div class="tiny">lesson 02</div><h3>notice the little things</h3><p>yung simpleng effort mo, random chika, or kahit yung bagay na naaalala mo about sakin, sobrang napapansin ko po yun kahit minsan hindi ko sabihin hehe</p></div><div class="card"><div class="tiny">lesson 03</div><h3>don't rush understanding</h3><p>may mga bagay na kailangan talaga ng time bago masabi, and okay lang yun po. ayoko kang pilitin mag open up agad, gusto ko lang malaman mo na kapag ready ka, makikinig ako</p></div><div class="card"><div class="tiny">lesson 04</div><h3>say it while you can</h3><p>kung proud ako sayo sasabihin ko, kung thankful ako sasabihin ko rin hehe ayoko kasi na isipin mong kailangan may special occasion muna bago ko sabihin sayo kung gaano kita naaappreciate</p></div></div></div></section>
+
+<section class="chapter"><div class="panel reveal"><div class="num">03 / tayo</div><h2>the ordinary things i love about us</h2><p class="lead">hindi lang yung special dates yung gusto kong maalala</p><p>gusto ko rin maalala yung mga araw na wala namang malaking nangyari hehe yung random na usapan, biglang tawanan, simpleng pag check kung okay ka, yung mga “kumain ka na po?” and yung mga kwento mong akala mo sobrang random lang</p><p>kasi habang tumatagal, nare realize ko na hindi naman pala kailangan laging may malaking ganap para maging happy ako kasama ka</p><p>minsan ikaw lang na ikaw, tapos ako lang na nandito, okay na sakin hehe</p><div class="song-card"><div><div class="song-label">play ikaw at ako when you want to remember the little things :></div><strong>ikaw at ako</strong></div><button onclick="playTrack('memory')">play :></button></div></div></section>
+
+<section class="chapter"><div class="panel reveal"><div class="num">04 / kapag natatakot tayo</div><h2>i already know who i want beside me</h2><p class="lead">i may not know every detail yet, but i know i'm serious about us</p><p>babii, hindi ko man alam exactly kung ano magiging itsura ng bawat araw na darating, sure ako sa isang bagay, gusto kong ikaw yung kasama ko habang binubuo natin yung future na gusto natin</p><p>i don't want us to keep looking at the future with fear kasi alam naman nating pareho kung gaano tayo kasigurado sa isa't isa. mas gusto kong isipin natin siya as something we're going to build slowly, together</p><p>and kapag may kailangan tayong pagdaanan, hindi ibig sabihin nun na kailangan nating pagdudahan yung tayo. pag uusapan natin, makikinig tayo, mag aadjust tayo, and we'll keep making space for each other</p><div class="song-card"><div><div class="song-label">play panata if you're worried about our future :></div><strong>panata</strong></div><button onclick="playTrack('promise')">play :></button></div></div></section>
+
+<section class="chapter"><div class="panel reveal"><div class="num">05 / ang panata</div><h2>what i mean when i say panata</h2><p class="lead">more like a promise na lagi kong susubukang gawin yung mga bagay na mahalaga satin</p><div class="promise"><p>panata ko na hindi kita pipilitin maging okay agad kapag hindi ka okay</p><p>panata ko na pakikinggan ko yung yaps mo kahit sobrang random pa niyan HAHAHA</p><p>panata ko na mapapansin ko yung little efforts mo kasi hindi naman siya maliit sakin</p><p>panata ko na kapag may misunderstanding, susubukan kong intindihin muna bago mag assume</p><p>panata ko na hindi ko gagamitin yung pagmamahal natin para manumbat or para maramdaman mong kailangan mong gawin yung gusto ko</p><p>at panata ko na habang pareho pa rin nating pinipili yung isa't isa, aalagaan ko yung tayo na binubuo natin</p></div><div class="song-card"><div><div class="song-label">play panata if you want to remember what i mean by choosing us :></div><strong>panata</strong></div><button onclick="playTrack('promise')">play :></button></div></div></section>
+
+<section class="chapter"><div class="panel reveal"><div class="num">06 / ikaw ulit</div><h2>if you could see yourself through my eyes</h2><p class="quote">“baka maintindihan mo kung bakit pati yung mga small things about you gusto kong alalahanin”</p><p>nakikita ko yung makulit mong side, random side, tahimik na side, yung sobrang saya mo, pati yung times na hindi mo alam ano sasabihin hehe and i love getting to know all of those sides of you</p><p>and babii, hindi mo naman kailangan maging ibang version ng sarili mo para ma appreciate kita</p><p>gusto ko lang talaga kitang makilala as you are, slowly lang, walang rush, pati yung mga parts na hindi mo pa totally naiintindihan about yourself</p></div></section>
+
+<section class="chapter"><div class="panel reveal"><div class="num">07 / mga bagay na gusto kong itago</div><h2>things i always end up remembering</h2><div class="cards"><div class="card"><div class="tiny">save file</div><h3>your random chika</h3><p>please never think na kailangan important muna yung story bago mo ikwento sakin hehe gusto ko nga yung random chika mo eh :></p></div><div class="card"><div class="tiny">save file</div><h3>your little efforts</h3><p>yung mga simple things na ginagawa mo tapos akala mo wala lang, pero napapansin ko talaga</p></div><div class="card"><div class="tiny">save file</div><h3>your quiet moments</h3><p>yung times na hindi naman kailangan magsalita nang sobra para maging okay tayo</p></div><div class="card"><div class="tiny">save file</div><h3>the way you remember</h3><p>kapag naaalala mo yung mga gusto ko or ayaw ko, doon ko nararamdaman na nakikinig ka talaga sakin hehe</p></div></div></div></section>
+
+<section class="chapter"><div class="panel reveal"><div class="num">08 / kapag mahirap</div><h2>when life gets a little heavy</h2><p class="lead">hindi naman lahat ng problem kailangan natin ayusin habang pagod tayong dalawa</p><p>kung may araw na tahimik ka, hindi ko naman kailangan agad isipin na may mali satin. and kapag ako naman yung hindi okay, sana matuto rin akong sabihin sayo nang maayos</p><p>pwede tayong mag pause muna, huminga, then pag okay na tayo saka natin pag usapan hehe</p><p>ang importante sakin, kapag may problem, hindi tayo yung magkakalaban. tayo yung dalawang taong may problem na kailangan nating ayusin together</p><div class="song-card"><div><div class="song-label">play panata if you're worried about our future :></div><strong>panata</strong></div><button onclick="playTrack('promise')">play :></button></div></div></section>
+
+<section class="chapter"><div class="panel reveal"><div class="num">09 / ikaw + ako</div><h2>this is what i mean by us</h2><p class="lead">hindi perfect, hindi parang movie ending, just us trying to make something good together</p><p>“tayo” means may space ka para maging ikaw, and may space din ako para maging ako</p><p>“tayo” means pwede tayong magkamali without making each other feel na hindi na tayo worth it</p><p>“tayo” means sasamahan natin yung good days, and matututo tayo sa bad days</p><p>and “tayo” means gusto ko pa ring makilala yung mga version mo na magiging ikaw in the future</p><div class="rule"></div><p>so ayun, hindi ko kailangan ng perfect map para maging sure sayo hehe</p><p>alam kong hindi natin kontrolado lahat ng mangyayari, pero sure ako sa intention ko sayo and sa gusto kong buuin natin. gusto kong maging honest tayo, gentle tayo sa isa't isa, and keep making memories na magiging atin talaga</p></div></section>
+
+<section class="chapter"><div class="panel ending reveal"><div class="num">10 / combine</div><h2>the part i really wanted you to find</h2><p class="lead">this is the part i secretly wanted you to find</p><p>kung may napansin ka, may dalawang songs sa little museum na 'to</p><p>yung isa para sa mga bagay na gusto kong balikan, at yung isa para sa mga bagay na gusto kong panghawakan habang papunta tayo sa future</p><p>one remembers where we came from</p><p>the other reminds me of what i want to keep building</p><p class="quote">and when you put them together, somehow it feels like the story i'm trying to tell you all along</p><p>ikaw at ako, with everything we've already been through</p><p>and tayo, with everything we haven't reached yet</p><p>hindi ko kailangan malaman lahat ng ending para ma-appreciate yung chapter na meron tayo ngayon</p><p>ang gusto ko lang, habang may bagong pages pa, sana pareho pa rin tayong willing magsulat</p><div class="promise"><p>so if someday you're worried about us, please remember that i don't expect us to be perfect</p><p>i just hope we stay honest, gentle, patient, and willing to understand each other</p><p>and if we ever have to learn each other again, then okay lang</p><p>aaralin ulit kita, babii</p><p>pipiliin ulit natin yung tayo, one day at a time</p></div><p>and finally, thank you</p><p>thank you for the random chikas, the little efforts, the quiet moments, the laughs, the things you remembered, the things you shared, and even the moments that taught us how to understand each other better</p><p>thank you for being someone i get to know a little more every day</p><p>hindi ko man alam lahat ng details ng future natin, sure ako sa gusto kong direction</p><p>gusto kong andun ka, gusto kong kasama ka, and gusto kong tayo yung patuloy na gumagawa ng paraan para sa mga pangarap natin. hindi dahil kailangan natin patunayan ang kahit ano, but because i genuinely want to build it with you</p><p class="signature">sowwi babii, babawi ako sayo hehe i loveee youu :>)</p><p class="signature">and if you ever forget what this whole thing was supposed to say...</p><p class="quote">it was simply this: ikaw at ako, choosing to become tayo</p><p class="signature">always your kakampi, babii :></p></div></section>
+<div class="footer">made with too many thoughts about you hehe · still choosing us · still learning each other</div>
+
+<section id="combineRoom" class="secret-room" aria-label="secret room">
+  <div class="secret-orbit"></div>
+  <div class="star star-a">✦</div><div class="star star-b">✧</div><div class="star star-c">⋆</div><div class="star star-d">✦</div>
+  <div class="flower f1">🌷</div><div class="flower f2">🌹</div><div class="flower f3">🌷</div><div class="flower f4">🌹</div>
+  <div class="flower f5">🌷</div><div class="flower f6">🌹</div>
+  <div class="secret-panel reveal">
+    <div class="secret-kicker">✦ combine room unlocked</div>
+    <h2 class="secret-title">ikaw + ako = tayo</h2>
+    <div class="secret-subtitle">two songs, one little room, and one very loved babii :></div>
+    <div class="secret-letter">
+      <p>babii, i'm so proud sayo for always making an effort para satin, para sakin :) hindi ko kailangan ng super grand na bagay para maappreciate ka, kasi honestly yung little efforts mo pa lang, ang dami ko nang napapansin</p>
+      <p>napapansin ko yung pag try mo, yung pag intindi mo, yung pag remember mo ng little things about me, yung pag listen mo sa mga kwento ko, and even the random things na ginagawa mo without thinking na baka mapansin ko hehe</p>
+      <div class="secret-highlight">i appreciate you more than a lot, more than everything that i have :></div>
+      <p>and i hope alam mo na hindi ko sinasabi yan dahil may kailangan kang gawin para sakin. i'm saying it because i genuinely appreciate you as you are, and because i want you to know na nakikita ko yung effort mo</p>
+      <p>i love your yaps, your random chika, your little updates, your makulit moments, and even those quiet moments na hindi mo kailangan punuin ng words. i love getting to know you in all those little ways</p>
+      <p>sobrang proud ako sayo hindi dahil kailangan mong maging perfect, but because you keep trying. you care about us, you care about me, and you keep learning how to love me better while letting me learn you too</p>
+      <p>and babii, please don't ever feel like your efforts have to be huge before they matter. sakin, they already matter. yung simpleng pag check mo, pag intindi mo, pag share mo ng araw mo, yung pag remember mo ng something na sinabi ko weeks ago, those things stay with me</p>
+      <p>sigurado ako sayo, and sigurado ako sa atin :) hindi ko kailangang gawing scary yung future natin para masabi kung gaano kita kamahal. mas gusto kong isipin yung future as something na sabay nating bubuuin, one little thing at a time</p>
+      <p>so thank you, babii, for being someone i can love, understand, laugh with, and grow with. thank you for every little effort na ginagawa mo para satin kahit hindi mo alam kung gaano siya kalaki sakin</p>
+      <p>i see you, i appreciate you, and i'm so so proud of you po :></p>
+      <p>and if i get to choose again and again, hindi dahil kailangan, but because i genuinely want to, ikaw pa rin. us pa rin. always with the same intention, to understand you, take care of what we have, and keep building our little future together</p>
+    </div>
+    <div class="secret-ending">
+      <div>okayyy that's enough before your husband gets too emotional HAHAHA</div>
+      <strong>i loveee youu babii, more than this little secret room could ever fit :>)</strong>
+    </div>
+    <div class="secret-note">✦ 🌷 🌹 ✦ for my favorite person, somewhere under the same little sky ✦ 🌹 🌷 ✦</div>
+  </div>
+</section>
+
+
+<section id="mysteryRoom" class="mystery-secret-room" aria-label="mystery secret room">
+  <div class="sunset-orb"></div><div class="sunset-cloud c1"></div><div class="sunset-cloud c2"></div>
+  <div class="sunset-flower sf1">🌷</div><div class="sunset-flower sf2">🌹</div><div class="sunset-flower sf3">🌷</div>
+  <div class="mystery-secret-panel">
+    <div class="secret-kicker">☼ mystery solved</div>
+    <h2 class="secret-title">for the girl who loves sunsets</h2>
+    <div class="secret-subtitle">you found the little answer i was hiding at the very end :></div>
+    <div class="sunset-letter">
+      <p>babii, i think this is the part where i finally stop making you click things HAHAHA</p>
+      <p>i know you love sunset and i hope whenever nakakakita ka ng sunset maalala mo ako:)</p>
+      <p>not because i want every beautiful thing to be about me hehe, but because i hope one day you'll see those colors and remember na somewhere in your ordinary day, there is someone who is genuinely so happy na ikaw yung kasama niya sa buhay</p>
+      <p>you know what's funny? i could've made this mystery about some random secret, pero of course ikaw pa rin yung sagot HAHAHA</p>
+      <div class="sunset-highlight">my favorite answer was never hidden that far away, it was always you :></div>
+      <p>i'm so proud sayo for always making an effort para satin, para sakin :) i notice more than you think i do, even the small things that you probably brush off as nothing</p>
+      <p>i appreciate you more than a lot, more than everything that i have :> and i hope you never have to question whether your little efforts reach me, kasi they do, every single time</p>
+      <p>so whenever the sky turns soft and pink, orange, purple, or whatever color it decides to be that day, pause for a second and smile hehe</p>
+      <p>maybe i'm not standing beside you at that exact moment, but i hope the thought of us makes that sunset feel a tiny bit warmer</p>
+      <p>and if someday you ask me again who's my babyy, i don't think i'll even need a mystery this time</p>
+      <p class="sunset-final">it's you, babii :) and i'm really, really glad it's you</p>
+    </div>
+    <div class="secret-ending"><div>you solved ittt, detective babii HAHAHA</div><strong>i loveee youu, always :>)</strong></div>
+  </div>
+</section>
+
+<section class="section reveal" id="openWhen"><div class="section-kicker">little letters ♡</div><h2>open when you need a little something</h2><p class="muted">choose whichever one feels like you right now hehe :></p><div class="openwhen-grid"><button class="openwhen-card" onclick="openLetter('overthink')"><span class="mini-label">for the overthinking version</span><b>open when you're overthinking</b><span>read this slowly, babii :></span></button><button class="openwhen-card" onclick="openLetter('miss')"><span class="mini-label">for the missing-you version</span><b>open when you miss me</b><span>a little lambing hehe</span></button><button class="openwhen-card" onclick="openLetter('tired')"><span class="mini-label">for the tired version</span><b>open when you're tired</b><span>you don't have to do everything at once</span></button><button class="openwhen-card" onclick="openLetter('enough')"><span class="mini-label">for the doubtful version</span><b>open when you feel like you're not doing enough</b><span>sttaappp, i noticed your effort :></span></button><button class="openwhen-card" onclick="openLetter('lambing')"><span class="mini-label">for the makulit version</span><b>open when you just want lambing :></b><span>obviously this exists HAHAHA</span></button></div></section>
+<section class="section reveal" id="remember"><div class="section-kicker">tiny details department</div><h2>things i remember about you</h2><p class="muted">not just the big things, even the tiny details that make you feel like you :></p><div class="openwhen-grid"><button class="memory-card" onclick="nextRemember(this)"><span class="mini-label">remembered #01</span><b>your random chika</b><span>i like hearing the little things that happen in your day, kahit super random pa yan hehe</span></button><button class="memory-card" onclick="nextRemember(this)"><span class="mini-label">remembered #02</span><b>the little preferences</b><span>the things you like and don't like, kahit casually mo lang sinabi</span></button><button class="memory-card" onclick="nextRemember(this)"><span class="mini-label">remembered #03</span><b>when you go quiet</b><span>sometimes you don't have to explain everything for me to notice something feels different</span></button><button class="memory-card" onclick="nextRemember(this)"><span class="mini-label">remembered #04</span><b>your little efforts</b><span>the things you do for us that you probably think are small are never small to me</span></button></div></section>
+<section class="section reveal" id="classified"><div class="section-kicker">classified ♡</div><h2>DO NOT OPEN</h2><p class="muted">this file is definitely not about a certain babii who somehow became very important to me</p><div class="classified"><div class="mini-label">classified file: BABII.EXE</div><h3 style="margin:8px 0">subject: my favorite little problem :p</h3><div class="classified-grid"><button class="classified-card" onclick="classifiedPop('cuteness')"><b>cuteness</b><span>concerning levels</span></button><button class="classified-card" onclick="classifiedPop('makulit')"><b>makulit level</b><span>unstable</span></button><button class="classified-card" onclick="classifiedPop('yap')"><b>yap frequency</b><span>high, keep it coming</span></button><button class="classified-card" onclick="classifiedPop('effect')"><b>effect on me</b><span>severe hehe</span></button></div><p style="margin-top:16px"><b>case status:</b> permanently keeping her :></p></div></section>
+<section class="section reveal" id="constellation"><div class="section-kicker">our little sky ♡</div><h2>a little constellation made from us</h2><p class="muted">click the stars one by one hehe, bawat isa may little thing na gusto kong maalala natin</p><div class="constellation-wrap"><div class="sky" id="sky"><svg class="constellation-lines" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M18 27 L43 18 L69 31 L58 63 L30 57 L48 82 L80 54 L69 31"/></svg><button class="star" onclick="starPop(0)"></button><button class="star" onclick="starPop(1)"></button><button class="star" onclick="starPop(2)"></button><button class="star" onclick="starPop(3)"></button><button class="star" onclick="starPop(4)"></button><button class="star" onclick="starPop(5)"></button><button class="star" onclick="starPop(6)"></button><div class="sky-title">click the stars one by one hehe :></div></div><div class="mystery-star-wrap"><span class="muted" style="font-size:11px">psst... may isang star na hindi kasya sa box :></span><button class="mystery-star" onclick="revealMystery()" aria-label="mystery star">✦</button></div><div class="card"><div class="mini-label">constellation log</div><h3 id="starTitle">our little things</h3><p id="starText">pick a star sa left hehe</p><div class="stat-row"><span>stars discovered</span><b id="starCount">0 / 7</b></div><div class="meter"><i id="starMeter" style="width:0%"></i></div></div></div></section>
+<section class="section reveal" id="gardenSection"><div class="section-kicker">little garden ♡</div><h2>the garden grows when you explore</h2><p class="muted">every little thing you unlock adds another flower, so don't rush it hehe</p><div class="garden" id="garden"><div class="moon"></div><div class="garden-note" id="gardenNote">0 little flowers so far :></div><span class="bloom" style="left:8%">🌷</span><span class="bloom" style="left:21%">🌹</span><span class="bloom" style="left:35%">🌷</span><span class="bloom" style="left:49%">🌹</span><span class="bloom" style="left:63%">🌷</span><span class="bloom" style="left:77%">🌹</span><span class="bloom" style="left:89%">🌷</span></div></section>
+<section class="section reveal" id="chooseUs"><div class="section-kicker">one last question ♡</div><h2>if you had to choose again...</h2><p class="muted">no trick question hehe, just a little ending button i made for us</p><div class="choose-wrap"><button class="choose-card" onclick="chooseUs('memory')"><div class="icon">♡</div><b>choose our memories</b><div>remember the little things</div></button><button class="choose-card" onclick="chooseUs('today')"><div class="icon">✦</div><b>choose today</b><div>stay in this little moment</div></button><button class="choose-card" onclick="chooseUs('us')"><div class="icon">∞</div><b>choose us</b><div>yeah, this is the one :></div></button></div></section>
+<section class="section reveal" id="mysteryFinal">
+  <div class="section-kicker">classified mystery ♡</div>
+  <h2>okay detective, who’s my babyy?</h2>
+  <p class="muted">the star outside the box wasn't the answer... it was the door hehe :> solve these little clues about us to unlock what’s behind it</p>
+  <div class="mystery-game" id="mysteryGame">
+    <div class="mystery-progress"><span id="mysteryProgress">0 / 4 solved</span><i><b id="mysteryBar"></b></i></div>
+    <div class="mystery-question" id="mysteryQuestion"></div>
+    <div class="mystery-choices" id="mysteryChoices"></div>
+    <div class="mystery-feedback" id="mysteryFeedback">choose carefully hehe, one little answer at a time :></div>
+  </div>
+</section>
+</main></div>
+
+<button class="music-fab" onclick="toggleDrawer()">our little soundtrack :></button>
+<div class="drawer" id="musicDrawer"><div class="drawer-head"><strong>our little soundtrack</strong><button class="close" onclick="toggleDrawer()">×</button></div>
+<div class="tabs"><button class="active" onclick="showAlbum('memory',this)">ikaw at ako</button><button onclick="showAlbum('promise',this)">panata</button><button onclick="showAlbum('combine',this)">combine</button></div>
+<div class="album active" id="memory"><div class="track"><div><b>ikaw at ako</b><small>for remembering our little things before</small></div><button onclick="playTrack('memory')">play</button></div><div class="track"><div><b>memory mode</b><small>for the chapters that look back</small></div><button onclick="playTrack('memory')">play</button></div></div>
+<div class="album" id="promise"><div class="track"><div><b>panata</b><small>for when you're worried about our future</small></div><button onclick="playTrack('promise')">play</button></div><div class="track"><div><b>promise mode</b><small>for the chapters about choosing us</small></div><button onclick="playTrack('promise')">play</button></div></div>
+<div class="album" id="combine"><div class="track"><div><b>ikaw + ako = tayo</b><small>the hidden little easter egg</small></div><button onclick="playCombined()">unlock</button></div><div class="unlock" id="unlockText">play both songs at least once to unlock the combine room hehe :></div><p class="drawer-note">the combine mode plays your two local music files together at a lower volume, so the ending feels like the two sides of the story meeting</p></div>
+</div>
+<audio id="memoryAudio" loop preload="auto" src="ikaw-at-ako.mp3"></audio><audio id="promiseAudio" loop preload="auto" src="panata.mp3"></audio><div class="toast" id="toast"></div>
+
+<div class="pet-popup" id="petPopup" aria-hidden="true" onclick="closePet(event)">
+  <div class="pet-pop-card" onclick="event.stopPropagation()">
+    <div class="pet-big">🐾</div><h3>our little friend</h3><p>description hehe</p>
+    <button class="pet-close" onclick="closePet()">okayyy :></button>
+  </div>
+</div>
+<script>
+const cover=document.getElementById('cover'),site=document.getElementById('site'),drawer=document.getElementById('musicDrawer'),toast=document.getElementById('toast'),memory=document.getElementById('memoryAudio'),promise=document.getElementById('promiseAudio'),sections=[...document.querySelectorAll('.chapter')],bar=document.getElementById('bar');
+let heard={memory:false,promise:false};let mode='none';
+function enterSite(){cover.style.display='none';site.classList.add('site-open');document.body.classList.add('site-active');site.style.display='block';document.querySelectorAll('#site .reveal').forEach(x=>x.classList.add('show'));window.scrollTo({top:0,left:0,behavior:'instant'});setTimeout(()=>{document.querySelectorAll('#site .reveal').forEach(x=>x.classList.add('show'));},120)}
+function toggleDrawer(){drawer.classList.toggle('open')}
+function showAlbum(id,btn){document.querySelectorAll('.album').forEach(a=>a.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));btn.classList.add('active')}
+function notify(t){toast.textContent=t;toast.classList.add('show');clearTimeout(window.__toast);window.__toast=setTimeout(()=>toast.classList.remove('show'),2400)}
+function stopAll(){memory.pause();promise.pause()}
+function playTrack(which){stopAll();if(which==='memory'){heard.memory=true;mode='memory';memory.currentTime=0;memory.play().then(()=>notify('playing ikaw at ako :>')).catch(()=>notify('add ikaw-at-ako.mp3 beside index.html :>'))}else{heard.promise=true;mode='promise';promise.currentTime=0;promise.play().then(()=>notify('playing panata :>')).catch(()=>notify('add panata.mp3 beside index.html :>'))}updateUnlock()}
+function updateUnlock(){if(heard.memory&&heard.promise){document.getElementById('unlockText').textContent='combine room unlocked :> click “unlock” to hear both sides of the story together'}else{document.getElementById('unlockText').textContent='play both songs at least once to unlock the combine room hehe :>'}}
+function unlockSecretRoom(){const room=document.getElementById('secretRoom');if(!room)return;room.classList.add('secret-unlocked');room.style.setProperty('display','flex','important');const panel=room.querySelector('.secret-panel');if(panel){panel.classList.add('show');panel.style.opacity='1';panel.style.transform='none'}setTimeout(()=>room.scrollIntoView({behavior:'smooth',block:'start'}),60)}
+function playCombined(){if(!(heard.memory&&heard.promise)){notify('play ikaw at ako + panata first hehe :>');return}stopAll();mode='combine';memory.currentTime=0;promise.currentTime=0;memory.volume=.42;promise.volume=.42;memory.play().catch(()=>{});promise.play().catch(()=>{});unlockCombineRoom();notify('ikaw + ako = tayo :> secret room unlocked hehe')}
+function unlockCombineRoom(){const room=document.getElementById('combineRoom');if(!room)return;room.classList.add('secret-unlocked');room.style.setProperty('display','flex','important');setTimeout(()=>room.scrollIntoView({behavior:'smooth',block:'start'}),180)}
+function showPet(el,which){const data={eli:['🐶','eli :D','our tiny guardian hehe','eli is officially the little protector of our world, probably watching us while we do all the cute stuff :D'],elo:['🐱','elo :p','our little judge','elo is here to silently judge our decisions, especially the cheesy ones HAHAHA :p'],kiyaa:['🦊','kiyaa','our chaos fox','kiyaa is responsible for a suspicious amount of chaos around here, but we keep her anyway hehe']}[which];const popup=document.getElementById('petPopup');if(popup){popup.querySelector('.pet-big').textContent=data[0];popup.querySelector('h3').textContent=data[1];popup.querySelector('p').textContent=data[3];popup.classList.add('show');popup.setAttribute('aria-hidden','false')}addFlower()}
+function closePet(e){if(e&&e.target!==e.currentTarget)return;const p=document.getElementById('petPopup');if(p){p.classList.remove('show');p.setAttribute('aria-hidden','true')}}
+function restoreVolume(){memory.volume=1;promise.volume=1}
+window.addEventListener('beforeunload',restoreVolume)
+const rev=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});document.querySelectorAll('.reveal').forEach(x=>rev.observe(x));
+const sec=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){let i=sections.indexOf(e.target);bar.style.width=((i+1)/sections.length*100)+'%'}}),{threshold:.55});sections.forEach(x=>sec.observe(x));
+
+const rememberPool=["your random updates kahit one sentence lang, i still like knowing what happened in your day","the little things you remember about me, especially the ones i only mentioned casually","your quiet moments, kasi hindi naman lahat kailangan maging explanation agad","the way you still make an effort kahit busy or tired ka","the little ways you show that you care without making a big announcement about it","your random little jokes that somehow stay in my head longer than expected hehe","the moments you let me see the softer side of you","the way you keep trying for us, even when things aren't perfectly easy"];let rememberIndex=0;const starData=[["first little light","some moments don't need to be huge to become favorites, sometimes it's just us talking and laughing about something random"],["the way you notice","i love that you notice little things too, it makes me feel seen in a way that is hard to explain"],["your effort","i'm so proud of you for always making an effort para satin, para sakin :)"],["our ordinary days","i don't need every day to be special, i just like the ordinary ones when you're part of them"],["your softer side","thank you for trusting me with the parts of you that you don't show to everyone"],["what i keep","i keep the little memories, the random chika, the silly moments, and the tiny things you probably already forgot"],["still us","if i get to choose again tomorrow, i'll still choose to understand you, listen to you, and choose us :>"]];let starsFound=new Set();function popText(t,x){
+  const el=window.event&&window.event.currentTarget;
+  if(!el)return;
+  const existing=el.querySelector('.inline-reveal');
+  if(existing){existing.remove();el.classList.remove('expanded');return}
+  document.querySelectorAll('.inline-reveal').forEach(n=>n.remove());
+  const box=document.createElement('div');box.className='inline-reveal';box.innerHTML='<b>'+t+'</b><br>'+x;el.appendChild(box);el.classList.add('expanded');addFlower();
+}
+function addFlower(){const g=document.getElementById('garden');if(!g)return;let n=Number(g.dataset.count||0);n=Math.min(7,n+1);g.dataset.count=n;g.querySelectorAll('.bloom').forEach((b,i)=>{if(i<n)b.style.transform='scale(1) rotate('+(i%2?-4:4)+'deg)'});g.classList.add('bloomed');document.getElementById('gardenNote').textContent=n+' little flower'+(n===1?'':'s')+' so far :>'}function openLetter(type){const d={overthink:["for the overthinking version","babii, breathe muna hehe, hindi mo kailangan solve-in lahat tonight, and you don't have to prove your worth through being perfect, okay? i know you're trying :>"],miss:["for the missing-you version","if you miss me, imagine me being makulit beside you and saying sttaappp HAHAHA, we'll have more little moments to make and remember :>"],tired:["for the tired version","resting doesn't make your effort smaller, babii, you can slow down without feeling guilty, i'm proud of you even on the days na wala kang energy to do everything"],enough:["for the doubtful version","you don't have to do grand things para maging enough, i notice your little efforts, your patience, your understanding, and the way you keep trying for us :)"],lambing:["for the lambing version","come hereee hehe, official reminder that your babii needs lambing too :> now smile a little, that's an order from husband HAHAHA"]}[type];popText(d[0],d[1]);addFlower()}function nextRemember(btn){rememberIndex=(rememberIndex+1)%rememberPool.length;btn.querySelector('span:last-child').textContent=rememberPool[rememberIndex];btn.querySelector('.mini-label').textContent='remembered #'+String(rememberIndex+1).padStart(2,'0');addFlower()}function classifiedPop(type){const d={cuteness:["CLASSIFIED ALERT","the system refuses to calculate it because the number is apparently too high :p"],makulit:["WARNING","makulit levels exceeded safe limits, but unfortunately i like it"],yap:["AUDIO LOG","yap detected, continue listening, do not interrupt the babii"],effect:["SYSTEM ERROR","unexpected happiness detected whenever subject appears, please continue hehe"]}[type];popText(d[0],d[1]);addFlower()}function starPop(i){starsFound.add(i);document.getElementById('starTitle').textContent=starData[i][0];document.getElementById('starText').textContent=starData[i][1];document.getElementById('starCount').textContent=starsFound.size+' / 7';document.getElementById('starMeter').style.width=(starsFound.size/7*100)+'%';addFlower()}function chooseUs(kind){const d={memory:"then let's keep making little memories, even the random boring ones hehe :>",today:"then stay here muna, with me, in this little moment :>",us:"you found the button i secretly wanted you to press :> keep scrolling, babii"};popText('choice saved ♡',d[kind]);addFlower();if(kind==='us'){const m=document.getElementById('mysteryFinal');if(m){setTimeout(()=>m.scrollIntoView({behavior:'smooth',block:'center'}),180)}}}
+
+let mysteryStep=0;const mysteryAnswers=[
+ {q:'clue 01 · who is my babyy?',a:['the girl reading this hehe','eli :D','a random stranger','the website developer'],c:0},
+ {q:'clue 02 · what do i notice about you the most?',a:['only your selfies','your little efforts and tiny changes','your grades only','nothing, i am lutang'],c:1},
+ {q:'clue 03 · what do i want us to keep doing?',a:['avoid talking','keep choosing each other and growing together','compete over everything','disappear randomly'],c:1},
+ {q:'clue 04 · if you see a pretty sunset, what do i hope you remember?',a:['this website only','to buy fries','me and our little moments :)','eli'],c:2}
+];
+function revealMystery(){renderMysteryQuestion()}
+function renderMysteryQuestion(){const q=mysteryAnswers[mysteryStep];if(!q)return;document.getElementById('mysteryQuestion').textContent=q.q;const wrap=document.getElementById('mysteryChoices');wrap.innerHTML='';q.a.forEach((text,i)=>{const b=document.createElement('button');b.className='mystery-choice';b.textContent=text;b.onclick=()=>answerMystery(i,b);wrap.appendChild(b)});document.getElementById('mysteryFeedback').textContent='choose carefully hehe, one little answer at a time :>';document.getElementById('mysteryProgress').textContent=mysteryStep+' / 4 solved';document.getElementById('mysteryBar').style.width=(mysteryStep/4*100)+'%'}
+function answerMystery(i,btn){const q=mysteryAnswers[mysteryStep];document.querySelectorAll('.mystery-choice').forEach(x=>x.disabled=true);if(i===q.c){btn.classList.add('correct');mysteryStep++;addFlower();document.getElementById('mysteryFeedback').textContent=mysteryStep===4?'WAITTT... you solved it :>':'correct hehe, next clue unlocked';setTimeout(()=>{if(mysteryStep===4)unlockMysteryRoom();else renderMysteryQuestion()},650)}else{btn.classList.add('wrong');document.getElementById('mysteryFeedback').textContent='hmmmmm... try again babii :p';document.querySelectorAll('.mystery-choice').forEach(x=>x.disabled=false);}}
+function unlockMysteryRoom(){document.getElementById('mysteryProgress').textContent='4 / 4 solved';document.getElementById('mysteryBar').style.width='100%';const room=document.getElementById('mysteryRoom');if(!room)return;room.classList.add('unlocked');room.style.display='flex';setTimeout(()=>room.scrollIntoView({behavior:'smooth',block:'start'}),250);notify('mystery solved... who’s my babyy? :>')}
+document.addEventListener('DOMContentLoaded',()=>{renderMysteryQuestion()});
+</script>
+</body></html>
